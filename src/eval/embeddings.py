@@ -6,13 +6,12 @@ import matplotlib.pyplot as plt
 import numpy as np
 import torch
 from lightning.pytorch import Trainer
+from matplotlib.colors import LinearSegmentedColormap
 from omegaconf import OmegaConf
 
 from src.train import init_model
 from src.utils.init_datasets import init_datasets
 from src.utils.utils import load_yaml_config
-
-from matplotlib.colors import LinearSegmentedColormap
 
 
 def parse_args():
@@ -104,7 +103,7 @@ def embedding_figure(
     devices: List[int] = [0],
 ):
     fig, axs = plt.subplots(nrows=1, ncols=5, figsize=(5, 0.8))
-    colors= [(0.96, 0.06, 0.58), (0, 0.59, 0.8)]  # R -> G -> B
+    colors = [(0.96, 0.06, 0.58), (0, 0.59, 0.8)]  # R -> G -> B
     custom_colors = LinearSegmentedColormap.from_list("custom_colors", colors, N=2)
 
     titles = [
