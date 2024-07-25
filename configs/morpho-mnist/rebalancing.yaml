@@ -1,0 +1,50 @@
+seed: 42
+
+output_dir: ./outputs/morpho_mnist_rebalancing/
+model_name: morpho_mnist_rebalancing
+job_type: cross-val
+
+wandb_logger:
+  project: medical-causal-disentanglement
+
+num_folds: 5
+sweep_metric: test0_c0_MulticlassAccuracy
+
+gpus: [0]
+max_epoch: 1000
+save_top_k: 1
+monitor_metric: valid_loss
+monitor_mode: min
+save_only_last_epoch: False
+sanity_steps: 1
+val_check_percent: 100
+val_check_interval: 2
+resume:
+
+data:
+  dataset_path: /path/to/data/
+  correlation_strength: [95, 5]
+  batch_size: 900
+  num_workers: 8
+  prefetch_factor: 2
+
+test_data:
+  correlation_strength_swapped: [5, 95]  # flipped dataset distribution
+  correlation_strength_balanced: [50, 50]
+  batch_size: 900
+  num_workers: 8
+  prefetch_factor: 2
+
+model:
+  method: rebalancing
+  encoder: simple_encoder
+  resnet_backbone:
+  in_channels: 1
+  two_layer_cs: True
+  latent_dim: 4
+  subspace_dims: [2, 2]
+  class_dims: [2, 2]
+  learning_rate_encoder: 0.001
+  weight_decay_encoder: 0.
+  adam_w: False
+  warmup_epochs: 0

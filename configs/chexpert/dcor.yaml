@@ -1,0 +1,57 @@
+seed: 42
+
+output_dir: ./outputs/chexpert_dcor/
+model_name: chexpert_dcor
+job_type: cross-val
+
+wandb_logger:
+  project: medical-causal-disentanglement
+
+num_folds: 5
+sweep_metric: test0_c0_BinaryAUROC
+
+gpus: [0]
+max_epoch: 30
+save_top_k: 1
+monitor_metric: valid_loss
+monitor_mode: min
+save_only_last_epoch: False
+save_after_x_epochs: 
+sanity_steps: 1
+val_check_percent: 100
+val_check_interval: 1
+resume:
+
+data:
+  dataset: chexpert
+  dataset_path: /gpfs01/berens/data/data
+  attribute_labels: ["Pleural Effusion", "Sex"]
+  bucket_labels: [[1, 1], [0, 1], [1, 0], [0, 0]]
+  bucket_samples: [10400, 546, 546, 10400]
+  frontal: True
+  image_size: 320
+  batch_size: 64
+  num_workers: 8
+  prefetch_factor: 2
+
+test_data:
+  bucket_samples_swapped: [21, 397, 397, 21]  # flipped dataset distribution
+  bucket_samples_balanced: [241, 241, 241, 241]
+  batch_size: 100
+  num_workers: 8
+  prefetch_factor: 2
+
+model:
+  method: dcor
+  encoder: resnet
+  resnet_backbone: 50
+  in_channels: 1
+  two_layer_cs: False
+  latent_dim: 4
+  subspace_dims: [2, 2]
+  class_dims: [1, 1]
+  lambda_dmeasure: 0.1
+  adam_w: True
+  learning_rate_encoder: 0.001
+  weight_decay_encoder: 0.0
+  warmup_epochs: 0
