@@ -1,13 +1,13 @@
 # Benchmarking Dependence Measures to Prevent Shortcut Learning in Medical Imaging
-This repository contains the code to reproduce the results from the paper "Benchmarking Dependence Measures to Prevent Shortcut Learning in Medical Imaging", which was accepted to the Machine Learning in Medical Imaging (MLMI) 2024 workshop.
+This repository contains the code to reproduce the results from the paper "Benchmarking Dependence Measures to Prevent Shortcut Learning in Medical Imaging", which was accepted to the 15th International Workshop on Machine Learning in Medical Imaging (MLMI 2024).
 
 We present a comprehensive performance comparison of dependency measures to prevent shortcut learning in medical imaging.
 
-<img src="./figures/overview_figure.svg" alt="drawing" width="650"/>
+<img src="./figures/overview_figure.svg" alt="drawing" width="700"/>
 
 # Installation
 
-Setup a python environment with a python version `3.10`. Then, download the code from https://anonymous.4open.science/r/dependence-measures-medical-imaging, activate the environment and install all other dependencies with
+Set up a python environment with a python version `3.10`. Then, download the repository, activate the environment and install all other dependencies with
 ```
 cd dependence-measures-medical-imaging
 pip install --editable . 
@@ -35,7 +35,7 @@ python src/data/download_data/load_morpho_mnist.py -d path-to-dataset-directory 
 ```
 For CheXpert you need to register, hence we provide additional information on how to register and download the dataset: [load_chexpert.txt](src/data/download_data/load_chexpert.txt).
 
-## Train one method
+## Training
 To run k-fold cross-validation for one method you need to hand over a config file to the train script. For example, for MINE with the Morpho-MNIST dataset the comand-line interface is 
 ```
 python src/train.py -tc configs/morpho-mnist/mine.yaml
@@ -68,13 +68,13 @@ python src/eval/embeddings.py -cfgs list_of_model_configs -ckpts list_of_model_c
 ```
 
 ## Cite
-Until the MLMI processings are published, please cite the preprint
+If you find our code or paper useful, please consider citing this work. Until the MLMI 2024 processings are published, please cite the preprint
 ```bibtex
-@inproceedings{smueller2024benchmarking,
-	author = {M\"uller, Sarah and Fay, Louisa and Koch, Lisa M. and Gatidis, Sergios and K\"ustner, Thomas and Berens, Philipp},
-	title = {Benchmarking Dependence Measures to Prevent Shortcut Learning in Medical Imaging},
-	year = {2024},
-	doi = {},
-	URL = {},
+@misc{mueller2024benchmarking,
+    title = {Benchmarking Dependence Measures to Prevent Shortcut Learning in Medical Imaging},
+    author = {M\"uller, Sarah and Fay, Louisa and Koch, Lisa M. and Gatidis, Sergios and K\"ustner, Thomas and Berens, Philipp},
+    year={2024},
+    eprint={},
+    archivePrefix={arXiv},
 }
 ``` 
