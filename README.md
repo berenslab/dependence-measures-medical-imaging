@@ -73,8 +73,8 @@ If you find our code or paper useful, please consider citing this work. Until th
 @misc{mueller2024benchmarking,
     title = {Benchmarking Dependence Measures to Prevent Shortcut Learning in Medical Imaging},
     author = {M\"uller, Sarah and Fay, Louisa and Koch, Lisa M. and Gatidis, Sergios and K\"ustner, Thomas and Berens, Philipp},
-    year={2024},
-    eprint={},
-    archivePrefix={arXiv},
+    year = {2024},
+    eprint = {2407.18792},
+    archivePrefix = {arXiv},
 }
 ``` 
