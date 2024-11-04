@@ -68,15 +68,15 @@ python src/eval/embeddings.py -cfgs list_of_model_configs -ckpts list_of_model_c
 ```
 
 ## Cite
-If you find our code or paper useful, please consider citing this work. Until the MLMI 2024 processings are published, please cite the preprint
+If you find our code or paper useful, please consider citing this work:
 ```bibtex
 @InProceedings{mueller2025benchmarking,
-    author = {M\"uller, Sarah and Fay, Louisa and Koch, Lisa M. and Gatidis, Sergios and K\"ustner, Thomas and Berens, Philipp},
+	author = {M\"uller, Sarah and Fay, Louisa and Koch, Lisa M. and Gatidis, Sergios and K\"ustner, Thomas and Berens, Philipp},
 	title = {Benchmarking Dependence Measures to Prevent Shortcut Learning in Medical Imaging},
-	booktitle= {Machine Learning in Medical Imaging},
-	year= {2025},
-	publisher= {Springer Nature Switzerland},
-	pages= {53--62},
-	isbn= {978-3-031-73290-4},
+	booktitle = {Machine Learning in Medical Imaging},
+	year = {2025},
+	publisher = {Springer Nature Switzerland},
+	pages = {53--62},
+	isbn = {978-3-031-73290-4},
 }
 ``` 
