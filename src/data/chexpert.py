@@ -98,7 +98,7 @@ class CheXpert(torch.utils.data.Dataset):
         # Undersample buckets by number of bucket_samples.
         if (self.bucket_labels is not None) and (self.bucket_samples is not None):
             labels_tensor = torch.tensor(meta[self._label_columns].to_numpy())
-            buckets_idxs = get_buckets(self.bucket_labels, labels_tensor)
+            buckets_idxs = get_bucket_indices(self.bucket_labels, labels_tensor)
             idxs = []
             for bucket_idxs, samples in zip(buckets_idxs, self.bucket_samples):
                 idxs.append(bucket_idxs[:samples])

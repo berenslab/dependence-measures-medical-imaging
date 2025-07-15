@@ -113,11 +113,11 @@ def get_bucket_indices(buckets: Tensor, meta: Tensor):
     Returns:
         Sequence of bucket indices.
     """
-    buckets = []
+    bucket_idxs = []
     for comb in buckets:
         bucket_mask = torch.all(meta == comb, dim=1)
-        buckets.append(torch.argwhere(bucket_mask).squeeze(-1))
-    return buckets
+        bucket_idxs.append(torch.argwhere(bucket_mask).squeeze(-1))
+    return bucket_idxs
 
 
 class DistributedBucketSampler(Sampler):
