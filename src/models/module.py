@@ -253,8 +253,8 @@ class SubspaceEncoderModule(pl.LightningModule):
         self.train_subspace_cs_loss.reset()
         self.train_loss.reset()
         self.p_value.reset()
-        for i in range(len(self.c_dims)):
-            self.cs_metrics[i].reset()
+        for metric in self.cs_metrics:
+            metric.reset()
 
     def _set_best_val_metrics(self, metric_dict):
         self.best_val_metrics = {
@@ -332,8 +332,8 @@ class SubspaceEncoderModule(pl.LightningModule):
         self.val_dmeasure_z1_z2.reset()
         self.val_subspace_cs_loss.reset()
         self.val_loss.reset()
-        for i in range(len(self.c_dims)):
-            self.val_cs_metrics[i].reset()
+        for metric in self.val_cs_metrics:
+            metric.reset()
 
     def on_test_epoch_end(self):
         metric_dict = {
@@ -369,5 +369,5 @@ class SubspaceEncoderModule(pl.LightningModule):
             self.test_dmeasure_z1_z2[dataloader_idx].reset()
             self.test_subspace_cs_loss[dataloader_idx].reset()
             self.test_loss[dataloader_idx].reset()
-            for i in range(len(self.c_dims)):
-                self.test_cs_metrics[i + len(self.c_dims) * dataloader_idx].reset()
+        for metric in self.test_cs_metrics:
+            metric.reset()
